@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Checklist
@@ -15,7 +13,7 @@ namespace Checklist
         public Main()
         {
             InitializeComponent();
-            if (Environment.GetCommandLineArgs().Count() > 1)
+            if (Environment.GetCommandLineArgs().Length > 1)
             {
                loadFile(Environment.GetCommandLineArgs()[1]);
             }
