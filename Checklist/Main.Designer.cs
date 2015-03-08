@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.textBox = new System.Windows.Forms.TextBox();
@@ -37,6 +38,11 @@
             this.removeButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.clearButton = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.completedStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.incompleteStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatuUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkedListBox1
@@ -105,12 +111,46 @@
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.completedStatusLabel,
+            this.incompleteStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 371);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(801, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // completedStatusLabel
+            // 
+            this.completedStatusLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.completedStatusLabel.ForeColor = System.Drawing.Color.Green;
+            this.completedStatusLabel.Name = "completedStatusLabel";
+            this.completedStatusLabel.Size = new System.Drawing.Size(83, 17);
+            this.completedStatusLabel.Text = "Completed: ...";
+            // 
+            // incompleteStatusLabel
+            // 
+            this.incompleteStatusLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.incompleteStatusLabel.ForeColor = System.Drawing.Color.Red;
+            this.incompleteStatusLabel.Name = "incompleteStatusLabel";
+            this.incompleteStatusLabel.Size = new System.Drawing.Size(50, 17);
+            this.incompleteStatusLabel.Text = "To do: ..";
+            // 
+            // StatuUpdateTimer
+            // 
+            this.StatuUpdateTimer.Enabled = true;
+            this.StatuUpdateTimer.Interval = 1000;
+            this.StatuUpdateTimer.Tick += new System.EventHandler(this.statusUpdate_tick);
+            // 
             // Main
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 364);
+            this.ClientSize = new System.Drawing.Size(801, 393);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.saveButton);
@@ -124,6 +164,8 @@
             this.Text = "Checklist!";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Main_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Main_DragEnter);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,6 +181,10 @@
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel completedStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel incompleteStatusLabel;
+        private System.Windows.Forms.Timer StatuUpdateTimer;
     }
 }
 

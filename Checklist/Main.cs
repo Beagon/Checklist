@@ -116,5 +116,25 @@ namespace Checklist
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             loadFile(files[0]);
         }
+
+        private void statusUpdate_tick(object sender, EventArgs e)
+        {
+            int completed = 0;
+            int incomplete = 0;
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                if (checkedListBox1.GetItemChecked(i))
+                {
+                    completed++;
+                }
+                else
+                {
+                    incomplete++;
+                }
+            }
+
+            completedStatusLabel.Text = "Completed: " + completed;
+            incompleteStatusLabel.Text = "To do: " + incomplete;
+        }
     }
 }
